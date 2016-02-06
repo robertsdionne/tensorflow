@@ -27,3 +27,8 @@ from tensorflow.python.ops.gen_user_ops import *
 def my_fact():
   """Example of overriding the generated code for an Op."""
   return gen_user_ops._fact()
+
+
+  @ops.RegisterGradient("SoftExponential")
+  def _soft_exponential_grad(op, grad):
+    return gen_user_ops.soft_exponential_grad(*op.inputs)
