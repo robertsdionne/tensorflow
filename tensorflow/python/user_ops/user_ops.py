@@ -29,6 +29,6 @@ def my_fact():
   return gen_user_ops._fact()
 
 
-  @ops.RegisterGradient("SoftExponential")
-  def _soft_exponential_grad(op, grad):
-    return gen_user_ops.soft_exponential_grad(*op.inputs)
+@ops.RegisterGradient("SoftExponential")
+def _soft_exponential_grad(op, grad):
+  return gen_user_ops.soft_exponential_grad(grad, op.inputs[0], op.inputs[1])
